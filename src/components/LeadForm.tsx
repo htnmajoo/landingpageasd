@@ -17,6 +17,13 @@ const LeadForm: React.FC<LeadFormProps> = ({ isOpen, onClose, source, onSuccess 
     needs: '',
     source: source, // Initialize source from prop
   });
+  
+  const [errors, setErrors] = useState({
+    name: '',
+    whatsapp: '',
+    business_type: '',
+    needs: ''
+  });
 
   // useEffect removed as formData.source is not directly used for submission logic
 
@@ -27,8 +34,47 @@ const LeadForm: React.FC<LeadFormProps> = ({ isOpen, onClose, source, onSuccess 
    * Logs success or failure status.
    * @param e The form event.
    */
+  const validateForm = () => {
+    let isValid = true;
+    const newErrors = {
+      name: '',
+      whatsapp: '',
+      business_type: '',
+      needs: ''
+    };
+
+    if (!formData.name.trim()) {
+      newErrors.name = 'Nama lengkap harus diisi';
+      isValid = false;
+    }
+
+    if (!formData.whatsapp.trim()) {
+      newErrors.whatsapp = 'Nomor WhatsApp harus diisi';
+      isValid = false;
+    } else if (!/^[0-9]+$/.test(formData.whatsapp)) {
+      newErrors.whatsapp = 'Nomor WhatsApp hanya boleh berisi angka';
+      isValid = false;
+    }
+
+    if (!formData.business_type) {
+      newErrors.business_type = 'Jenis usaha harus dipilih';
+      isValid = false;
+    }
+
+    if (!formData.needs.trim()) {
+      newErrors.needs = 'Kebutuhan harus diisi';
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+    return isValid;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!validateForm()) return;
+    
     // Create dataToSubmit explicitly using formData state and the source prop
     const dataToSubmit = {
       name: formData.name,
@@ -71,10 +117,11 @@ const LeadForm: React.FC<LeadFormProps> = ({ isOpen, onClose, source, onSuccess 
             <input
               type="text"
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-[#008080] focus:border-[#008080]"
+              className={`w-full px-3 py-2 border ${errors.name ? 'border-red-500' : 'border-gray-300'} rounded-md focus:ring-[#008080] focus:border-[#008080]`}
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             />
+            {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
           </div>
 
           <div>
@@ -84,10 +131,13 @@ const LeadForm: React.FC<LeadFormProps> = ({ isOpen, onClose, source, onSuccess 
             <input
               type="tel"
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-[#008080] focus:border-[#008080]"
+              className={`w-full px-3 py-2 border ${errors.whatsapp ? 'border-red-500' : 'border-gray-300'} rounded-md focus:ring-[#008080] focus:border-[#008080]`}
               value={formData.whatsapp}
               onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}
+              pattern="[0-9]*"
+              inputMode="numeric"
             />
+            {errors.whatsapp && <p className="text-red-500 text-xs mt-1">{errors.whatsapp}</p>}
           </div>
 
           <div>
@@ -96,10 +146,11 @@ const LeadForm: React.FC<LeadFormProps> = ({ isOpen, onClose, source, onSuccess 
             </label>
             <select
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-[#008080] focus:border-[#008080]"
+              className={`w-full px-3 py-2 border ${errors.business_type ? 'border-red-500' : 'border-gray-300'} rounded-md focus:ring-[#008080] focus:border-[#008080]`}
               value={formData.business_type}
               onChange={(e) => setFormData({ ...formData, business_type: e.target.value })}
             >
+              {errors.business_type && <p className="text-red-500 text-xs mt-1">{errors.business_type}</p>}
               <option value="">Pilih jenis usaha</option>
               <option value="retail">Toko Retail/Kelontong</option>
               <option value="fnb">Restoran/Cafe</option>
@@ -114,12 +165,13 @@ const LeadForm: React.FC<LeadFormProps> = ({ isOpen, onClose, source, onSuccess 
               Kebutuhan Anda
             </label>
             <textarea
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-[#008080] focus:border-[#008080]"
+              className={`w-full px-3 py-2 border ${errors.needs ? 'border-red-500' : 'border-gray-300'} rounded-md focus:ring-[#008080] focus:border-[#008080]`}
               rows={3}
               value={formData.needs}
               onChange={(e) => setFormData({ ...formData, needs: e.target.value })}
               placeholder="Ceritakan kebutuhan bisnis Anda..."
             />
+            {errors.needs && <p className="text-red-500 text-xs mt-1">{errors.needs}</p>}
           </div>
 
           <button
