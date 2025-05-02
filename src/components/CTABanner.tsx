@@ -30,7 +30,7 @@ const CTABanner: React.FC = () => {
 
   return (
     <>
-      <section className="py-16 bg-primary-600 relative overflow-hidden">
+      <section className="py-16 bg-[#006666] relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute -right-20 -top-20 w-64 h-64 rounded-full bg-white"></div>
           <div className="absolute -left-20 -bottom-20 w-64 h-64 rounded-full bg-white"></div>
@@ -77,7 +77,7 @@ const CTABanner: React.FC = () => {
               <div className="space-y-4">
                 <button 
                   onClick={handleTrialClick}
-                  className="flex items-center justify-center w-full px-6 py-3 bg-primary-600 text-white font-medium rounded-lg hover:bg-primary-700 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+                  className="flex items-center justify-center w-full px-6 py-3 bg-[#008080] text-white font-medium rounded-lg hover:bg-[#006666] transition-colors focus:outline-none focus:ring-2 focus:ring-[#008080] focus:ring-offset-2"
                 >
                   Daftar Free Trial
                   <ArrowRight className="ml-2 h-5 w-5" />
