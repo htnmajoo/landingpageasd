@@ -12,7 +12,7 @@ interface FeatureCardProps {
 const FeatureCard: React.FC<FeatureCardProps> = ({ icon, title, description }) => {
   return (
     <div className="feature-card bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-100">
-      <div className="mb-4 text-primary-600">{icon}</div>
+      <div className="mb-4 text-[#008080]">{icon}</div>
       <h3 className="text-xl font-semibold mb-2">{title}</h3>
       <p className="text-gray-600">{description}</p>
     </div>
@@ -45,7 +45,7 @@ const Features: React.FC = () => {
 
   return (
     <>
-    <section id="fitur" className="py-16 md:py-24 bg-gray-50">
+    <section id="fitur" className="py-16 md:py-24 bg-gray-50 font-outfit">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Fitur Unggulan majoo</h2>
@@ -89,7 +89,7 @@ const Features: React.FC = () => {
             <h3 className="text-xl font-semibold mb-4 text-center">Dan masih banyak fitur lainnya!</h3>
             <button 
               onClick={handleTrialClick} // Change to onClick handler
-              className="inline-flex items-center px-6 py-3 bg-primary-600 text-white font-medium rounded-lg hover:bg-primary-700 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+              className="inline-flex items-center px-6 py-3 bg-[#008080] text-white font-medium rounded-lg hover:bg-[#006666] transition-colors focus:outline-none focus:ring-2 focus:ring-[#008080] focus:ring-offset-2"
             >
               Daftar Free Trial Sekarang
             </button>

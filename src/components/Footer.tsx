@@ -58,10 +58,10 @@ const Footer: React.FC = () => {
                 Aplikasi kasir online terlengkap untuk UMKM. Kelola toko, stok, laporan, dan karyawan dari satu aplikasi.
               </p>
               <div className="flex space-x-4">
-                <a href="https://www.instagram.com/majoo.indonesia/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-primary-400 transition-colors">
+                <a href="https://www.instagram.com/majoo.indonesia/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#80CBC4] transition-colors">
                   <Instagram className="h-6 w-6" />
                 </a>
-                <a href="https://www.facebook.com/revolusimajoo/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-primary-400 transition-colors">
+                <a href="https://www.facebook.com/revolusimajoo/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#80CBC4] transition-colors">
                   <Facebook className="h-6 w-6" />
                 </a>
               </div>
@@ -71,15 +71,15 @@ const Footer: React.FC = () => {
               <h3 className="text-lg font-semibold mb-4 text-white">Kontak</h3>
               <ul className="space-y-3">
                 <li className="flex items-start">
-                  <Phone className="h-5 w-5 text-primary-400 mr-2 mt-0.5" />
+                  <Phone className="h-5 w-5 text-[#80CBC4] mr-2 mt-0.5" />
                   <span className="text-gray-400">021 1500 460</span>
                 </li>
                 <li className="flex items-start">
-                  <Mail className="h-5 w-5 text-primary-400 mr-2 mt-0.5" />
+                  <Mail className="h-5 w-5 text-[#80CBC4] mr-2 mt-0.5" />
                   <span className="text-gray-400">halo@majoo.id</span>
                 </li>
                 <li className="flex items-start">
-                  <MapPin className="h-5 w-5 text-primary-400 mr-2 mt-0.5" />
+                  <MapPin className="h-5 w-5 text-[#80CBC4] mr-2 mt-0.5" />
                   <span className="text-gray-400">
                     <h1>Kantor Pusat</h1><br></br><h2>SMESCO Tower, lantai 3
     Jl. Gatot Subroto No.Kav. 94, RT.11/RW.3, Pancoran, Kec. Pancoran, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12780</h2>
@@ -97,7 +97,7 @@ const Footer: React.FC = () => {
             <div className="flex space-x-4">
               <button 
                 onClick={handleTrialClick} // Change to onClick handler
-                className="inline-flex items-center px-4 py-2 bg-primary-600 text-white text-sm font-medium rounded-lg hover:bg-primary-700 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-gray-900"
+                className="inline-flex items-center px-4 py-2 bg-[#008080] text-white text-sm font-medium rounded-lg hover:bg-[#006D5B] transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-gray-900"
               >
                 Daftar Free Trial
               </button>

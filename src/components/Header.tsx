@@ -55,18 +55,18 @@ const Header: React.FC = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-8 items-center"> {/* Added items-center */}
-          <a href="#fitur" className="font-medium hover:text-primary-600 transition-colors">
+          <a href="#fitur" className="font-medium hover:text-[#80CBC4] transition-colors">
             Fitur
           </a>
-          <a href="#testimonial" className="font-medium hover:text-primary-600 transition-colors">
+          <a href="#testimonial" className="font-medium hover:text-[#80CBC4] transition-colors">
             Testimoni
           </a>
-          <a href="#faq" className="font-medium hover:text-primary-600 transition-colors">
+          <a href="#faq" className="font-medium hover:text-[#80CBC4] transition-colors">
             FAQ
           </a>
           <button 
             onClick={handleTrialClick} // Use onClick handler
-            className="font-medium text-primary-600 hover:text-primary-700 transition-colors bg-transparent border-none p-0 cursor-pointer"
+            className="font-medium text-[#008080] hover:text-[#006D5B] transition-colors bg-transparent border-none p-0 cursor-pointer"
           >
             Free Trial
           </button>

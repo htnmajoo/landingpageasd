@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
 import { Lead, submitLead } from '../lib/supabase';
 
@@ -15,8 +15,10 @@ const LeadForm: React.FC<LeadFormProps> = ({ isOpen, onClose, source, onSuccess 
     whatsapp: '',
     business_type: '',
     needs: '',
-    source,
+    source: source, // Initialize source from prop
   });
+
+  // useEffect removed as formData.source is not directly used for submission logic
 
   /**
    * Handles the form submission event.
@@ -27,8 +29,16 @@ const LeadForm: React.FC<LeadFormProps> = ({ isOpen, onClose, source, onSuccess 
    */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData); // Added for debugging
-    const success = await submitLead(formData);
+    // Create dataToSubmit explicitly using formData state and the source prop
+    const dataToSubmit = {
+      name: formData.name,
+      whatsapp: formData.whatsapp,
+      business_type: formData.business_type,
+      needs: formData.needs,
+      source: source, // Explicitly use the source prop passed from Footer
+    };
+    console.log('Form submitted with source prop:', source, 'and data to submit:', dataToSubmit); // Debugging final data
+    const success = await submitLead(dataToSubmit);
     if (success) {
       console.log('Lead submission successful, calling onSuccess'); // Added for debugging
       onSuccess();
@@ -61,7 +71,7 @@ const LeadForm: React.FC<LeadFormProps> = ({ isOpen, onClose, source, onSuccess 
             <input
               type="text"
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-[#008080] focus:border-[#008080]"
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             />
@@ -74,7 +84,7 @@ const LeadForm: React.FC<LeadFormProps> = ({ isOpen, onClose, source, onSuccess 
             <input
               type="tel"
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-[#008080] focus:border-[#008080]"
               value={formData.whatsapp}
               onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}
             />
@@ -86,7 +96,7 @@ const LeadForm: React.FC<LeadFormProps> = ({ isOpen, onClose, source, onSuccess 
             </label>
             <select
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-[#008080] focus:border-[#008080]"
               value={formData.business_type}
               onChange={(e) => setFormData({ ...formData, business_type: e.target.value })}
             >
@@ -104,7 +114,7 @@ const LeadForm: React.FC<LeadFormProps> = ({ isOpen, onClose, source, onSuccess 
               Kebutuhan Anda
             </label>
             <textarea
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-[#008080] focus:border-[#008080]"
               rows={3}
               value={formData.needs}
               onChange={(e) => setFormData({ ...formData, needs: e.target.value })}
@@ -114,7 +124,7 @@ const LeadForm: React.FC<LeadFormProps> = ({ isOpen, onClose, source, onSuccess 
 
           <button
             type="submit"
-            className="w-full bg-primary-600 text-white py-2 px-4 rounded-md hover:bg-primary-700 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+            className="w-full bg-[#008080] text-white py-2 px-4 rounded-md hover:bg-[#006666] transition-colors focus:outline-none focus:ring-2 focus:ring-[#008080] focus:ring-offset-2"
           >
             {source === 'trial' ? 'Mulai Free Trial' : 'Kirim & Chat WhatsApp'}
           </button>

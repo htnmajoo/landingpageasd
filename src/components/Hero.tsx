@@ -42,7 +42,7 @@ const Hero: React.FC = () => {
 
   return (
     <>
-    <section className="pt-32 pb-20 md:pt-40 md:pb-24 bg-gradient-to-br from-primary-50 to-white">
+    <section className="pt-32 pb-20 md:pt-40 md:pb-24 bg-gradient-to-br from-primary-50 to-white font-outfit">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center">
           <div className="md:w-1/2 md:pr-12">
@@ -57,7 +57,7 @@ const Hero: React.FC = () => {
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
               <button 
                 onClick={handleTrialClick} // Change to onClick handler
-                className="inline-flex items-center justify-center px-6 py-3 bg-primary-600 text-white font-medium rounded-lg hover:bg-primary-700 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+                className="inline-flex items-center justify-center px-6 py-3 bg-[#008080] text-white font-medium rounded-lg hover:bg-[#006666] transition-colors focus:outline-none focus:ring-2 focus:ring-[#008080] focus:ring-offset-2"
               >
                 Daftar Free Trial
                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -83,7 +83,7 @@ const Hero: React.FC = () => {
         
         <div className="mt-16 py-6 px-8 bg-white rounded-lg shadow-lg">
           <p className="text-center text-lg font-medium text-gray-700">
-            Dipercaya oleh <span className="text-primary-600 font-bold">45.000+</span> pelaku usaha di <span className="text-primary-600 font-bold">600+</span> kota di Indonesia
+            Dipercaya oleh <span className="text-[#008080] font-bold">45.000+</span> pelaku usaha di <span className="text-[#008080] font-bold">600+</span> kota di Indonesia
           </p>
         </div>
       </div>
