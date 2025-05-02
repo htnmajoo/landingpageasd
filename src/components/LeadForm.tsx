@@ -18,11 +18,22 @@ const LeadForm: React.FC<LeadFormProps> = ({ isOpen, onClose, source, onSuccess 
     source,
   });
 
+  /**
+   * Handles the form submission event.
+   * Prevents default form submission, logs form data, submits the lead,
+   * and calls the onSuccess callback if submission is successful.
+   * Logs success or failure status.
+   * @param e The form event.
+   */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log('Form submitted:', formData); // Added for debugging
     const success = await submitLead(formData);
     if (success) {
+      console.log('Lead submission successful, calling onSuccess'); // Added for debugging
       onSuccess();
+    } else {
+      console.log('Lead submission failed'); // Added for debugging
     }
   };
 

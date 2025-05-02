@@ -21,13 +21,20 @@ export const trackClick = async (type: 'trial' | 'whatsapp') => {
   }
 };
 
+/**
+ * Submits lead data to the Supabase 'leads' table.
+ * Logs the lead data being submitted.
+ * @param lead The lead data object.
+ * @returns True if submission is successful, false otherwise.
+ */
 export const submitLead = async (lead: Lead) => {
+  console.log('Submitting lead:', lead); // Added for debugging
   try {
     const { error } = await supabase.from('leads').insert(lead);
     if (error) throw error;
     return true;
   } catch (error) {
-    console.error('Error submitting lead:', error);
+    console.error('Error submitting lead:', error); // Log error
     return false;
   }
 };
