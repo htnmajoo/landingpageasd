@@ -24,7 +24,7 @@ const CTABanner: React.FC = () => {
     if (formType === 'trial') {
       window.location.href = 'https://dashboard.majoo.id/auth/register?ref=MAJ0002242';
     } else {
-      window.location.href = 'https://wa.me/message/HI4JF2AQ2MELK1';
+      window.location.href = 'https://wa.me/6287885884966'; // Updated WhatsApp number
     }
   };
 
